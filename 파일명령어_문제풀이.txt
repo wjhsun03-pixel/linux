@@ -1,0 +1,108 @@
+[파일명령어 문제풀이]
+
+1. pwd
+2. mkdir practice_dir
+3. cd practice_dir
+4. pwd
+5. touch test1.txt
+6. ls
+7. touch test1.txt
+8. date
+한국시간 세팅
+sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
+9. ls -l test1.txt
+10. cp test1.txt test2.txt
+
+11. mkdir workspace
+    touch workspace/sample.txt
+12. touch -t 203508151030 workspace/sample.txt
+    
+     ls –al 했을 때 2035만 나옴 : ls -al --full-time
+
+13. cp -r workspace copy_workspace
+14. cp /etc/hosts copy_workspace
+15. find . -name "*.txt"
+16. find . -type f -empty
+17. cat -n sample.txt
+18. grep "test" sample.txt
+19. mv sample.txt backup.txt
+20. rm -r copy_workspace
+
+
+21. 현재 디렉터리에서 .log파일만 찾아 logs_dir로 이동하시오.
+👉 정답
+mkdir logs_dir
+find . -name "*.log" -exec mv {} logs_dir \;
+
+22. /etc디렉터리에서 conf문자열이 포함된 파일 내용을 모두 검색하시오.
+👉 정답
+grep -r "conf" /etc
+
+23. 현재 디렉터리에서 .txt파일을 모두 backup디렉터리에 복사하시오.
+👉 정답
+mkdir backup
+cp *.txt backup/
+
+24. backup디렉터리의 모든 파일을 한 번에 삭제하시오.
+👉 정답
+rm backup/*
+
+
+25. 현재 디렉터리에서 가장 최근 수정된 파일 5개를 출력하시오.
+👉 정답
+ls -lt | head -5
+
+26. 파일 내용 중 "error" 문자열이 포함된 행을 행 번호 포함 출력하시오.
+👉 정답
+grep -n "error" filename
+
+27. 현재 디렉터리에서 크기가 0인 파일만 찾으시오.
+👉 정답
+find . -type f -empty
+
+28. temp디렉터리를 복사하여 temp_backup으로 만들되, 덮어쓰기 여부를 확인하도록 하시오.
+👉 정답
+cp -ri temp temp_backup
+
+29. 현재 사용자가 실행 중인 명령어 ls의 위치를 확인하시오.
+👉 정답
+which ls
+
+또는
+whereis ls
+
+30. 현재 디렉터리에서 test라는 문자열이 포함된 파일 이름만 출력하시오.
+👉 정답
+grep -rl "test" .
+ 
+31. [로그 정리 작업]
+현재 디렉터리에 .log파일이 많다.→ log_backup디렉터리를 만들고 모든 .log파일을 이동하시오.
+👉 정답
+mkdir log_backup
+mv *.log log_backup/
+
+32. [에러 로그 분석]
+system.log파일에서 "ERROR" 문자열이 포함된 부분을👉 행 번호와 함께 출력하시오.
+👉 정답
+grep -n "ERROR" system.log
+
+33. [백업 자동화]
+project디렉터리를 project_backup으로 복사하시오. (하위 디렉터리 포함)
+👉 정답
+cp -r project project_backup
+
+34. [불필요 파일 정리]
+현재 디렉터리에서 빈 파일을 모두 찾아 삭제하시오.
+👉 정답
+find . -type f -empty -delete
+
+35. [파일 재정리 작업]
+현재 디렉터리의 .txt파일을 모두 찾아→ docs디렉터리로 이동하시오.
+👉 정답
+mkdir docs
+find . -name "*.txt" -exec mv {} docs \;
+
+
+
+
